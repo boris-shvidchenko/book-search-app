@@ -3,16 +3,31 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline' 
 
+// Context
+import { Context } from '../pages/_app';
+
 // Hooks
-import { useEffect } from 'react';
+import { useContext } from 'react';
 
 export default function Home() {
 
-  // useEffect(() => {
-  //   fetch(`https://www.googleapis.com/books/v1/volumes?q=ww1&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  // }, [])
+  // Obtain app state
+  const { search, setSearch, setBookData } = useContext(Context);
+
+  // Submit the search, make API call to get data, save data to state, clear search state
+  function submitSearch(event) {
+    event.preventDefault();
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
+      .then(response => response.json())
+      .then(data => setBookData(data))
+      .then(setSearch(''))
+      .catch(err => console.error(err))
+  }
+
+  // Update the search state
+  function updateSearch(event) {
+    setSearch(event.target.value);
+  }
 
   return (
     <>
@@ -29,25 +44,21 @@ export default function Home() {
           src='/images/cover.png'
           width={2000}
           height={2000}
-          alt=''
-          className='w-full h-screen object-cover blur-[1px]'
+          alt='Background of a shelf of books'
+          className='index-img'
         />
-        <section className='bg-black/70  absolute top-0 w-full h-full text-white'>
-          <div className='sm:w-[40rem] lg:w-[52rem] mx-auto mt-[12rem] text-center'>
-
-            <h1 className='text-4xl sm:text-5xl lg:text-7xl mb-10'>Discover your next read!</h1>
-
-            <div className='flex items-center w-80 sm:w-[30rem] lg:w-[37rem] mx-auto mb-12 space-x-5 md:space-x-11 pr-4 sm:pr-0'>
-              <hr className='w-16 border-t-2 hidden sm:block' />
+        <section className='index-sec'>
+          <div className='index-main-div'>
+            <h1 className='index-h1'>Discover your next read!</h1>
+            <div className='index-txt-div'>
+              <hr className='index-hr' />
               <p>Enter a title name, author, subject, or term and we will search for the top 40 books that match your search!</p>
-              <hr className='w-16 border-t-2 hidden sm:block' />
+              <hr className='index-hr' />
             </div>
-
-            <form className='border border-white bg-black/10 flex p-3 rounded-full w-80 mx-auto justify-between space-x-2'>
-              <input required type="text" className='w-full bg-transparent focus:outline-none' />
+            <form onSubmit={(e)=>submitSearch(e)} method='post' className='index-form'>
+              <input required id='search' name='search' type="text" value={search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none' />
               <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
             </form>
-
           </div>
         </section>
       </main>

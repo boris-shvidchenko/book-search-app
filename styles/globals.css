@@ -5,3 +5,34 @@
 body {
     background-color: #141414;
 }
+
+@layer components {
+
+    .index-img {
+        @apply w-full h-screen object-cover blur-[1px]
+    }
+
+    .index-sec {
+        @apply bg-black/70  absolute top-0 w-full h-full text-white
+    }
+
+    .index-main-div {
+        @apply sm:w-[40rem] lg:w-[52rem] mx-auto mt-[12rem] text-center
+    }
+
+    .index-h1 {
+        @apply text-4xl sm:text-5xl lg:text-7xl mb-10
+    }
+
+    .index-txt-div {
+        @apply flex items-center w-80 sm:w-[30rem] lg:w-[37rem] mx-auto mb-12 space-x-5 md:space-x-11 pr-4 sm:pr-0
+    }
+
+    .index-hr {
+        @apply w-16 border-t-2 hidden sm:block
+    }
+
+    .index-form {
+        @apply border border-white bg-black/10 flex p-3 rounded-full w-80 mx-auto justify-between space-x-2
+    }
+}
