@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
   }
 
   // For testing 
-  console.log(state.search);
+  // console.log(state.search);
   console.log(state.bookData);
 
   return (
