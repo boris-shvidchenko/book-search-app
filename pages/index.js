@@ -1,18 +1,22 @@
 // Components
 import Head from 'next/head';
 import Image from 'next/image';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline' 
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'; 
 
 // Context
 import { Context } from '../pages/_app';
 
 // Hooks
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Home() {
 
   // Obtain app state
   const { search, setSearch, setBookData } = useContext(Context);
+
+  // Router setup
+  const router = useRouter();
 
   // Submit the search, make API call to get data, save data to state, clear search state
   function submitSearch(event) {
@@ -21,6 +25,7 @@ export default function Home() {
       .then(response => response.json())
       .then(data => setBookData(data))
       .then(setSearch(''))
+      .then(router.push('/results'))
       .catch(err => console.error(err))
   }
 
@@ -56,7 +61,7 @@ export default function Home() {
               <hr className='index-hr' />
             </div>
             <form onSubmit={(e)=>submitSearch(e)} method='post' className='index-form'>
-              <input required id='search' name='search' type="text" value={search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none' />
+              <input required id='search' name='search' type="text" value={search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none ml-3' />
               <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
             </form>
           </div>
@@ -66,7 +71,3 @@ export default function Home() {
   )
 }
 
-// API URL > https://www.googleapis.com/books/v1/volumes?q=peterhopkirk&maxResults=40&key=yourAPIKey 
-// q={search results} 
-// maxResults={total # of results, 40 is most provided by Google Books API} 
-// key={my API key, it is encoded and no need to hide. Simply store in env.local and check URL to confrim security}

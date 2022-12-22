@@ -33,6 +33,6 @@ body {
     }
 
     .index-form {
-        @apply border border-white bg-black/10 flex p-3 rounded-full w-80 mx-auto justify-between space-x-2
+        @apply border border-white bg-black/10 flex p-3 rounded-full w-80 mx-auto justify-between space-x-2 
     }
 }
