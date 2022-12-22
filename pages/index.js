@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 export default function Home() {
 
   // Obtain app state
-  const { search, setSearch, setBookData } = useContext(Context);
+  const { state, dispatch } = useContext(Context);
 
   // Router setup
   const router = useRouter();
@@ -21,17 +21,17 @@ export default function Home() {
   // Submit the search, make API call to get data, save data to state, clear search state
   function submitSearch(event) {
     event.preventDefault();
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${state.search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
       .then(response => response.json())
-      .then(data => setBookData(data))
-      .then(setSearch(''))
+      .then(data => dispatch({type: 'setBookData', bookData: data}))
+      .then(dispatch({type: 'updateSearch', search: ''}))
       .then(router.push('/results'))
       .catch(err => console.error(err))
   }
 
   // Update the search state
   function updateSearch(event) {
-    setSearch(event.target.value);
+    dispatch({type: 'updateSearch', search: event.target.value});
   }
 
   return (
@@ -61,7 +61,7 @@ export default function Home() {
               <hr className='index-hr' />
             </div>
             <form onSubmit={(e)=>submitSearch(e)} method='post' className='index-form'>
-              <input required id='search' name='search' type="text" value={search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none ml-3' />
+              <input required id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none ml-3' />
               <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
             </form>
           </div>

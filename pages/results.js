@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 export default function Results() {
 
     // Obtain app state
-    const { search, setSearch, bookData, setBookData, searchModal } = useContext(Context);
+    const { state, dispatch } = useContext(Context);
 
     // Router setup
     const router = useRouter();
@@ -23,7 +23,7 @@ export default function Results() {
             <Head>
                 <title>Book Search - Results</title>
             </Head>
-            {searchModal && <SearchModal />}
+            {state.searchModal && <SearchModal />}
             <main className='sm:mx-[5%] px-5 h-screen bg-[#252525]'>
                 <Navbar />
                 {/* Filter section? */}
