@@ -1,3 +1,6 @@
+// Components
+import LoadingScreen from '../components/LoadingScreen';
+
 // Styles
 import '../styles/globals.css';
 
@@ -39,6 +42,7 @@ export default function App({ Component, pageProps }) {
   return (
     <Context.Provider value={{state, dispatch}}>
       <Component {...pageProps} />  
+      <LoadingScreen />
     </Context.Provider>
   )
 }

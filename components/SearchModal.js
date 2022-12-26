@@ -8,6 +8,9 @@ import { Context } from '../pages/_app';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
+// Promise Tracking
+import { trackPromise } from 'react-promise-tracker';
+
 export default function SearchModal() {
 
     // Obtain app state
@@ -19,13 +22,15 @@ export default function SearchModal() {
     // Submit the search, make API call to get data, save data to state, clear search state
     function submitSearch(event) {
         event.preventDefault();
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${state.search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
-        .then(response => response.json())
-        .then(data => dispatch({type: 'setBookData', bookData: data}))
-        .then(dispatch({type: 'updateSearch', search: ''}))
-        .then(dispatch({type: 'toggleSearchModal', searchModal: false}))
-        .then(router.push('/results'))
-        .catch(err => console.error(err))
+        trackPromise(
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${state.search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
+                .then(response => response.json())
+                .then(data => dispatch({type: 'setBookData', bookData: data}))
+                .then(dispatch({type: 'updateSearch', search: ''}))
+                .then(dispatch({type: 'toggleSearchModal', searchModal: false}))
+                .then(router.push('/results'))
+                .catch(err => console.error(err))
+        )
     }
 
     // Update the search state
@@ -39,7 +44,7 @@ export default function SearchModal() {
     }
 
     return (
-        <main className='absolute top-0 text-white bg-black/80 w-full h-full overflow-hidden'>
+        <main className='absolute top-0 text-white bg-black/80 w-full h-full overflow-hidden z-50'>
 
             <XMarkIcon onClick={openSearchModal} className='h-8 w-8 fixed top-8 right-7 cursor-pointer'/>
             

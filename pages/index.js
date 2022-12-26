@@ -10,6 +10,9 @@ import { Context } from '../pages/_app';
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
+// Promise Tracking
+import { trackPromise } from 'react-promise-tracker';
+
 export default function Home() {
 
   // Obtain app state
@@ -21,12 +24,14 @@ export default function Home() {
   // Submit the search, make API call to get data, save data to state, clear search state
   function submitSearch(event) {
     event.preventDefault();
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${state.search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
-      .then(response => response.json())
-      .then(data => dispatch({type: 'setBookData', bookData: data}))
-      .then(dispatch({type: 'updateSearch', search: ''}))
-      .then(router.push('/results'))
-      .catch(err => console.error(err))
+    trackPromise(
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${state.search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
+        .then(response => response.json())
+        .then(data => dispatch({type: 'setBookData', bookData: data}))
+        .then(dispatch({type: 'updateSearch', search: ''}))
+        .then(router.push('/results'))
+        .catch(err => console.error(err))
+    )
   }
 
   // Update the search state
