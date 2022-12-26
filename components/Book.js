@@ -22,9 +22,9 @@ export default function Book({ title, description, authors, image }) {
                 <h1 className='font-semibold text-xl line-clamp-2 mb-2'>{title}</h1>
                 <p className='italic'>{writers}</p>
                 <p className='h-30 line-clamp-5 my-2'>{description}</p>
-                <Link href='#' className='flex items-center space-x-3'>
-                    <p className='text-lg italic'>More Details</p>
-                    <ChevronRightIcon className='w-5 h-5' />
+                <Link href='#' className='flex items-center space-x-1'>
+                    <p className='text-lg italic w-26'>More Details</p>
+                    <ChevronRightIcon className='w-4 h-4 relative top-0.5' />
                 </Link>
             </section>
         </div>

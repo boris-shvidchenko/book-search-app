@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import SearchModal from '../components/SearchModal';
 import Book from '../components/Book';
+import Footer from '../components/Footer';
 
 // Context
 import { Context } from '../pages/_app';
@@ -38,12 +39,14 @@ export default function Results() {
                 <title>Book Search - Results</title>
             </Head>
             {state.searchModal && <SearchModal />}
+            <Navbar />
             <main className='results-main'>
-                <Navbar />
                 {/* Filter section? */}
                 <section className='results-section'>
+                    <div id='top' className='hidden' />
                     {books}
                 </section>
+                <Footer />
             </main>
         </div>
     )
