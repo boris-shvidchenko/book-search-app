@@ -38,10 +38,10 @@ export default function Results() {
                 <title>Book Search - Results</title>
             </Head>
             {state.searchModal && <SearchModal />}
-            <main className='sm:mx-[5%] px-5 h-full bg-[#252525] text-white'>
+            <main className='results-main'>
                 <Navbar />
                 {/* Filter section? */}
-                <section className='grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-10 gap-y-10 pt-10'>
+                <section className='results-section'>
                     {books}
                 </section>
             </main>

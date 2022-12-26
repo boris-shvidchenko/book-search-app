@@ -43,4 +43,12 @@ body {
     .loading-scrn-spinner {
         @apply flex justify-center w-80 mx-auto mt-64
     }
+
+    .results-main {
+        @apply sm:mx-[5%] px-5 h-full bg-[#252525] text-white
+    }
+
+    .results-section {
+        @apply grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-10 gap-y-10 pt-10
+    }
 }
