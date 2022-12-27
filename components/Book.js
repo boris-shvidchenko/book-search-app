@@ -10,9 +10,9 @@ export default function Book({ title, description, authors, image }) {
     const writers = authors?.length > 1 ? authors.join(', ') : authors?.[0];
     
     return (
-        <div className='flex justify-start lg:justify-center space-x-5 items-center md:w-auto h-[21rem] bg-[#383838] rounded-2xl shadow-xl drop-shadow-lg px-4'>
+        <div className='flex justify-start lg:justify-center space-x-5 items-center md:w-auto h-[21rem] bg-[#383838] rounded-2xl shadow-xl drop-shadow-lg px-4 overflow-hidden'>
             <Image
-                src={image}
+                src={image !== undefined ? image : ''}
                 height={1000}
                 width={1000}
                 alt={`Book cover image of ${title}`}

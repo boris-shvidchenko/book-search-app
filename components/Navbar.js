@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 // Context
 import { Context } from '../pages/_app';
+import { ResultsContext } from '../pages/results';
 
 // Hooks
 import { useContext } from 'react';
@@ -14,24 +15,27 @@ import { trackPromise } from 'react-promise-tracker';
 
 export default function Navbar() {
 
-    // Obtain app state
+    // Obtain app state and results state
     const { state, dispatch } = useContext(Context);
+    const { setStartNum, setEndNum} = useContext(ResultsContext);
 
     // Router setup
     const router = useRouter();
 
-    // Submit the search, make API call to get data, save data to state, clear search state
+    // Submit the search, make API call to get data, save data to state, clear search state, return start and end num states to default
     function submitSearch(event) {
         event.preventDefault();
         trackPromise(
             fetch(`https://www.googleapis.com/books/v1/volumes?q=${state.search}&maxResults=40&key=${process.env.NEXT_PUBLIC_API_KEY}`)
-                .then(response => response.json())
-                .then(data => dispatch({type: 'setBookData', bookData: data}))
-                .then(dispatch({type: 'updateSearch', search: ''}))
-                .then(router.push('/results'))
-                .catch(err => console.error(err))
-        )
-    }
+            .then(response => response.json())
+            .then(data => dispatch({type: 'setBookData', bookData: data}))
+            .then(dispatch({type: 'updateSearch', search: ''}))
+            .then(router.push('/results'))
+            .catch(err => console.error(err))
+            )
+        setStartNum(0);
+        setEndNum(10);
+        }
 
     // Update the search state
     function updateSearch(event) {
