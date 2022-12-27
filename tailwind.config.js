@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       lineClamp: {
+        9: '9',
         12: '12'
       }
     },

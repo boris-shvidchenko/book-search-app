@@ -49,7 +49,7 @@ export default function Book(props) {
                 height={1000}
                 width={1000}
                 alt={`Book cover image of ${props.title}`}
-                className='w-52 h-72 object-fit rounded-md'
+                className='w-52 h-72 object-fit rounded-md shadow-xl drop-shadow-xl shadow-black/10'
             />
             <section className='w-auto lg:w-96 h-60 max-h-60 p-1 relative -top-8'>
                 <h1 className='font-semibold text-xl line-clamp-2 mb-2'>{props.title}</h1>
