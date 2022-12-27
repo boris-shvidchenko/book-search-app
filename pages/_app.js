@@ -18,7 +18,8 @@ export default function App({ Component, pageProps }) {
     bookData: null,
     searchModal: false,
     startNum: 0,
-    endNum: 10
+    endNum: 10,
+    tempBookData: null
   };
 
 
@@ -36,6 +37,8 @@ export default function App({ Component, pageProps }) {
         return {...state, searchModal: action.searchModal};
       case 'updatePage':
         return {...state, startNum: action.startNum, endNum: action.endNum};
+      case 'updateTempBookData':
+        return {...state, tempBookData: action.tempBookData};
       default:
         return state;
     }
