@@ -35,8 +35,14 @@ export default function Results() {
                 description = {item?.volumeInfo?.description}
                 authors = {item?.volumeInfo?.authors}
                 image = {item?.volumeInfo?.imageLinks?.thumbnail}
-                id={item?.id}
-                key={item?.id}
+                category = {item?.volumeInfo?.categories}
+                language = {item?.volumeInfo?.language}
+                pages = {item?.volumeInfo?.pageCount}
+                previewLink = {item?.volumeInfo?.previewLink}
+                published = {item?.volumeInfo?.publishedDate}
+                publisher = {item?.volumeInfo?.publisher}
+                id = {item?.id}
+                key = {item?.id}
             />
         )
     })
