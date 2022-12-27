@@ -47,7 +47,7 @@ export default function Home() {
         <meta name="keywords" content="Boris Shvidchenko, Portfolio, Book search, App" />
         <meta name="author" content="Boris Shvidchenko" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Book Search</title>
+        <title>GeoBooks</title>
       </Head>
       <main className=' relative overflow-hidden'>
         <Image 

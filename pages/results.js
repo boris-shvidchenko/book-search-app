@@ -61,13 +61,13 @@ export default function Results() {
     return (
         <div className='relative'>
             <Head>
-                <title>Book Search - Results</title>
+                <title>GeoBooks - Results</title>
             </Head>
             {state.searchModal && <SearchModal />}
             <Navbar />
             {state.details && <BookDetails />}
             <main className='results-main'>
-                {/* Filter section? */}
+
                 <section className='results-section'>
                     <div id='top' className='hidden' />
                     {books}
