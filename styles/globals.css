@@ -37,7 +37,7 @@ body {
     }
 
     .loading-scrn-main {
-        @apply absolute top-0  bg-black/80 w-full h-full overflow-hidden z-50
+        @apply absolute top-0 bg-black/80 w-full h-full overflow-hidden z-50
     }
 
     .loading-scrn-spinner {

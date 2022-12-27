@@ -38,7 +38,8 @@ export default function Book(props) {
             bookPublisher: props.publisher,
             bookId: props.id,
             bookKey: props.key
-        }})
+        }});
+        dispatch({type: 'showDetails', details: true});
     }
     
     return (
@@ -54,10 +55,10 @@ export default function Book(props) {
                 <h1 className='font-semibold text-xl line-clamp-2 mb-2'>{props.title}</h1>
                 <p className='italic'>{writers}</p>
                 <p className='h-30 line-clamp-5 my-2'>{props.description}</p>
-                <Link href={`/results/${props.id}`} onClick={showBookDetails} className='flex items-center space-x-1'>
+                <div onClick={showBookDetails} className='flex items-center space-x-1 cursor-pointer'>
                     <p className='text-lg italic w-26'>More Details</p>
                     <ChevronRightIcon className='w-4 h-4 relative top-0.5' />
-                </Link>
+                </div>
             </section>
         </div>
     )

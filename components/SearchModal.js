@@ -1,4 +1,4 @@
-// Components
+// Heroicons
 import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 // Context
