@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 import { Context } from '../pages/_app';
 
 // Hooks
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 import { useRouter } from 'next/router';
 
 // Heroicons
@@ -26,19 +26,16 @@ export default function Results() {
 
     // Router setup
     const router = useRouter();
-    
-    // Local state for pagination
-    const [startNum, setStartNum] = useState(0);
-    const [endNum, setEndNum] = useState(10);
 
      // Map through book data from API
-    const books = state.bookData?.items?.slice(startNum, endNum).map(item => {
+    const books = state.bookData?.items?.slice(state.startNum, state.endNum).map(item => {
         return(
             <Book 
                 title = {item?.volumeInfo?.title}
                 description = {item?.volumeInfo?.description}
                 authors = {item?.volumeInfo?.authors}
                 image = {item?.volumeInfo?.imageLinks?.thumbnail}
+                id={item?.id}
                 key={item?.id}
             />
         )
@@ -46,41 +43,37 @@ export default function Results() {
 
     // Move to next page
     function nextPage() {
-        setStartNum(prevNum => prevNum += 10);
-        setEndNum(prevNum => prevNum += 10)
+        dispatch({type: 'updatePage', startNum: state.startNum + 10, endNum: state.endNum + 10});
     }
 
     // Move to previous page
     function prevPage() {
-        setStartNum(prevNum => prevNum -= 10);
-        setEndNum(prevNum => prevNum -= 10)
+        dispatch({type: 'updatePage', startNum: state.startNum - 10, endNum: state.endNum - 10});
     }
 
     return (
-        <ResultsContext.Provider value={{startNum, setStartNum, endNum, setEndNum}}>
-            <div className='relative'>
-                <Head>
-                    <title>Book Search - Results</title>
-                </Head>
-                {state.searchModal && <SearchModal />}
-                <Navbar />
-                <main className='results-main'>
-                    {/* Filter section? */}
-                    <section className='results-section'>
-                        <div id='top' className='hidden' />
-                        {books}
-                    </section>
-                    <section className='results-pages'>
-                        {startNum !== 0 && <Link href='#top' onClick={prevPage}>
-                            <ChevronLeftIcon className='w-9 h-9' />
-                        </Link>}
-                        {endNum !== 40 && <Link href='#top' onClick={nextPage}>
-                            <ChevronRightIcon className='w-9 h-9' />
-                        </Link>}
-                    </section>
-                    <Footer />
-                </main>
-            </div>
-        </ResultsContext.Provider>
+        <div className='relative'>
+            <Head>
+                <title>Book Search - Results</title>
+            </Head>
+            {state.searchModal && <SearchModal />}
+            <Navbar />
+            <main className='results-main'>
+                {/* Filter section? */}
+                <section className='results-section'>
+                    <div id='top' className='hidden' />
+                    {books}
+                </section>
+                <section className='results-pages'>
+                    {state.startNum !== 0 && <Link href='#top' onClick={prevPage}>
+                        <ChevronLeftIcon className='w-9 h-9' />
+                    </Link>}
+                    {state.endNum !== 40 && <Link href='#top' onClick={nextPage}>
+                        <ChevronRightIcon className='w-9 h-9' />
+                    </Link>}
+                </section>
+                <Footer />
+            </main>
+        </div>
     )
 }

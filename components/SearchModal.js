@@ -3,7 +3,6 @@ import { XMarkIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 // Context
 import { Context } from '../pages/_app';
-import { ResultsContext } from '../pages/results';
 
 // Hooks
 import { useContext } from 'react';
@@ -16,7 +15,6 @@ export default function SearchModal() {
 
     // Obtain app state and results state
     const { state, dispatch } = useContext(Context);
-    const { setStartNum, setEndNum} = useContext(ResultsContext);
 
     // Router setup
     const router = useRouter();
@@ -33,8 +31,7 @@ export default function SearchModal() {
             .then(router.push('/results'))
             .catch(err => console.error(err))
             )
-        setStartNum(0);
-        setEndNum(10);
+        dispatch({type: 'updatePage', startNum: 0, endNum: 10});
         }
 
     // Update the search state

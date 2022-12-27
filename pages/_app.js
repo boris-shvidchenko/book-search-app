@@ -16,8 +16,11 @@ export default function App({ Component, pageProps }) {
   const initialState = {
     search: '',
     bookData: null,
-    searchModal: false
+    searchModal: false,
+    startNum: 0,
+    endNum: 10
   };
+
 
   // Reducer
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -31,14 +34,17 @@ export default function App({ Component, pageProps }) {
         return {...state, bookData: action.bookData};
       case 'toggleSearchModal':
         return {...state, searchModal: action.searchModal};
+      case 'updatePage':
+        return {...state, startNum: action.startNum, endNum: action.endNum};
       default:
         return state;
     }
   }
 
   // For testing 
-  // console.log(state.endNum);
   console.log(state.bookData);
+  console.log(state.startNum);
+  console.log(state.endNum);
 
   return (
     <Context.Provider value={{state, dispatch}}>
