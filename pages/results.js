@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 // Heroicons
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
+// Context setup
 export const ResultsContext = createContext();
 
 export default function Results() {
@@ -69,16 +70,14 @@ export default function Results() {
                         <div id='top' className='hidden' />
                         {books}
                     </section>
-
-                    <section className='flex space-x-14 justify-center pt-2 pb-10 w-36 mx-auto'>
-                        <Link href='#top' onClick={prevPage}>
+                    <section className='results-pages'>
+                        {startNum !== 0 && <Link href='#top' onClick={prevPage}>
                             <ChevronLeftIcon className='w-9 h-9' />
-                        </Link>
-                        <Link href='#top' onClick={nextPage}>
+                        </Link>}
+                        {endNum !== 40 && <Link href='#top' onClick={nextPage}>
                             <ChevronRightIcon className='w-9 h-9' />
-                        </Link>
+                        </Link>}
                     </section>
-
                     <Footer />
                 </main>
             </div>

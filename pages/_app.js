@@ -7,6 +7,7 @@ import '../styles/globals.css';
 // Hooks
 import { createContext, useReducer } from 'react';
 
+// Context setup
 export const Context = createContext(); 
 
 export default function App({ Component, pageProps }) {
