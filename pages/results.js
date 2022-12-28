@@ -74,10 +74,10 @@ export default function Results() {
                 </section>
                 <section className='results-pages'>
                     {state.startNum !== 0 && <Link href='#top' onClick={prevPage}>
-                        <ChevronLeftIcon className='w-9 h-9 hover:text-[#f55b14]' />
+                        <ChevronLeftIcon className='results-arrows' />
                     </Link>}
                     {state.endNum !== 40 && <Link href='#top' onClick={nextPage}>
-                        <ChevronRightIcon className='w-9 h-9 hover:text-[#f55b14]' />
+                        <ChevronRightIcon className='results-arrows' />
                     </Link>}
                 </section>
                 <Footer />

@@ -43,21 +43,21 @@ export default function Book(props) {
     }
     
     return (
-        <div className='flex justify-start lg:justify-center space-x-5 items-center md:w-auto h-[21rem] bg-[#383838] rounded-2xl shadow-xl drop-shadow-lg px-4 overflow-hidden'>
+        <div className='book-main'>
             <Image
                 src={props.image !== undefined ? props.image : ''}
                 height={1000}
                 width={1000}
                 alt={`Book cover image of ${props.title}`}
-                className='w-52 h-72 object-fit rounded-md shadow-xl drop-shadow-xl shadow-black/10'
+                className='book-img object-fit'
             />
-            <section className='w-auto lg:w-96 h-60 max-h-60 p-1 relative -top-8'>
-                <h1 className='font-semibold text-xl line-clamp-2 mb-2'>{props.title}</h1>
-                <p className='italic text-[#bdbcbc] line-clamp-2'>{writers}</p>
-                <p className='h-30 line-clamp-5 my-2 break-all sm:break-normal'>{props.description}</p>
-                <div onClick={showBookDetails} className='flex items-center space-x-1 cursor-pointer text-[#f55b14] hover:font-semibold'>
+            <section className='book-sec'>
+                <h1 className='book-title '>{props.title}</h1>
+                <p className='book-auth'>{writers}</p>
+                <p className='h-30 book-desc'>{props.description}</p>
+                <div onClick={showBookDetails} className='book-div'>
                     <p className='text-lg italic w-26'>More Details</p>
-                    <ChevronRightIcon className='w-4 h-4 relative top-0.5' />
+                    <ChevronRightIcon className='book-icon' />
                 </div>
             </section>
         </div>

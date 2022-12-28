@@ -62,11 +62,11 @@ export default function Home() {
             <h1 className='index-h1'>Discover your next read!</h1>
             <div className='index-txt-div'>
               <hr className='index-hr' />
-              <p>Enter a title name, author, subject, or term and we will search for the top 40 books that match your search!</p>
+              <p>Enter a title name, author, subject, or term and we will look for the top 40 books that match your search!</p>
               <hr className='index-hr' />
             </div>
             <form onSubmit={(e)=>submitSearch(e)} method='post' className='index-form'>
-              <input required id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none ml-3' />
+              <input required id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='index-input' />
               <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
             </form>
           </div>
