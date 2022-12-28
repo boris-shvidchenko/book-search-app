@@ -11,7 +11,7 @@ import BookDetails from '../components/BookDetails';
 import { Context } from '../pages/_app';
 
 // Hooks
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 // Heroicons
@@ -28,7 +28,7 @@ export default function Results() {
     // Router setup
     const router = useRouter();
 
-     // Map through book data from API
+    // Map through book data from API
     const books = state.bookData?.items?.slice(state.startNum, state.endNum).map(item => {
         return(
             <Book 
