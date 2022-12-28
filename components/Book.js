@@ -13,7 +13,7 @@ import { ChevronRightIcon } from '@heroicons/react/24/outline';
 export default function Book(props) {
 
     // Obtain app state
-    const { dispatch } = useContext(Context);
+    const { state, dispatch } = useContext(Context);
     
     // Obtain authors from array
     const writers = props.authors?.length > 1 ? props.authors.join(', ') : props.authors?.[0];
@@ -36,9 +36,14 @@ export default function Book(props) {
         }});
         dispatch({type: 'showDetails', details: true});
     }
+
+    // Styles
+    const bookStructure = state.mobileWidth.width < 400 ? 'flex-col space-y-10 items-center pt-9 h-auto' : '';
+    const bookText = state.mobileWidth.width < 400 ? 'text-center right-2' : '';
+    const bookDetails = state.mobileWidth.width < 400 ? 'w-max mx-auto' : '';
     
     return (
-        <div className='book-main'>
+        <div className={`book-main ${bookStructure}`}>
             <Image
                 src={props.image !== undefined ? props.image : ''}
                 height={1000}
@@ -46,11 +51,11 @@ export default function Book(props) {
                 alt={`Book cover image of ${props.title}`}
                 className='book-img object-fit'
             />
-            <section className='book-sec'>
+            <section className={`book-sec ${bookText}`}>
                 <h1 className='book-title '>{props.title}</h1>
                 <p className='book-auth'>{writers}</p>
                 <p className='h-30 book-desc'>{props.description}</p>
-                <div onClick={showBookDetails} className='book-div'>
+                <div onClick={showBookDetails} className={`book-div ${bookDetails}`}>
                     <p className='text-lg italic w-26'>More Details</p>
                     <ChevronRightIcon className='book-icon' />
                 </div>
