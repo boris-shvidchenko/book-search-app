@@ -20,8 +20,12 @@ export default function BookDetails() {
         dispatch({type: 'showDetails', details: false});
     }
 
+    // Styles 
+    const detailsPosition = state.mobileWidth.width < 768 ? 'absolute bg-[#383838]' : '';
+    const detailsMobileDesc = state.mobileWidth.width < 768 ? 'line-clamp-none max-h-[100rem]' : '';
+
     return (
-        <main className={`details-main ${state.mobileWidth.width < 768 ? 'absolute bg-[#383838]' : ''}`}>
+        <main className={`details-main ${detailsPosition}`}>
             <XMarkIcon onClick={closeDetails} className='details-x'/>
             <div className='details-div1'>
                 <section className='details-sec1'>
@@ -44,7 +48,7 @@ export default function BookDetails() {
                             {state?.tempBookData?.bookPrevLink && <a className='details-link' target='_blank' href={state?.tempBookData?.bookPrevLink}>Preview Link</a>}
                         </div>   
                     </section>
-                    <p className='details-desc'>{state?.tempBookData?.bookDescription}</p>
+                    <p className={`details-desc ${detailsMobileDesc}`}>{state?.tempBookData?.bookDescription}</p>
                 </section>  
             </div>
         </main>
