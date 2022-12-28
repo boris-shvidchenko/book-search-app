@@ -54,7 +54,7 @@ export default function Book(props) {
             <section className='w-auto lg:w-96 h-60 max-h-60 p-1 relative -top-8'>
                 <h1 className='font-semibold text-xl line-clamp-2 mb-2'>{props.title}</h1>
                 <p className='italic'>{writers}</p>
-                <p className='h-30 line-clamp-5 my-2'>{props.description}</p>
+                <p className='h-30 line-clamp-5 my-2 break-all sm:break-normal'>{props.description}</p>
                 <div onClick={showBookDetails} className='flex items-center space-x-1 cursor-pointer'>
                     <p className='text-lg italic w-26'>More Details</p>
                     <ChevronRightIcon className='w-4 h-4 relative top-0.5' />

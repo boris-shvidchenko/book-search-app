@@ -52,8 +52,8 @@ export default function Navbar() {
 
     return (
         <div className='sm:mx-[5%] flex items-center justify-between bg-[#383838] shadow-2xl px-5 sm:w-[90%] h-24 text-white sticky top-0 z-10'>
-            <Link href='/' onClick={returnHome}><h1 className='text-3xl sm:text-4xl'>GeoBooks</h1></Link>
-            <form onSubmit={(e)=>submitSearch(e)} method='post' className='hidden border border-white bg-black/10 sm:flex p-3 rounded-full sm:w-52 md:w-64 lg:w-80 justify-between space-x-2 mx-0'>
+            <Link href='/' onClick={returnHome}><h1 className='text-3xl sm:text-4xl h-font tracking-wide'>GeoBooks</h1></Link>
+            <form onSubmit={(e)=>submitSearch(e)} method='post' className='hidden border border-[#a8a8a8] bg-black/10 sm:flex p-3 rounded-full sm:w-52 md:w-64 lg:w-80 justify-between space-x-2 mx-0'>
               <input required placeholder='New Search...' id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none ml-3' />
               <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
             </form>

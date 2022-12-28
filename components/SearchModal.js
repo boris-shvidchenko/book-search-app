@@ -51,7 +51,7 @@ export default function SearchModal() {
 
             <div className='flex flex-col w-80 mx-auto mt-56 text-center space-y-6'>
                 <p className='text-xl'>Search for a new book.</p>
-                <form onSubmit={(e)=>submitSearch(e)} method='post' className='border border-white bg-black/60 flex p-3 rounded-full justify-between space-x-2 '>
+                <form onSubmit={(e)=>submitSearch(e)} method='post' className='border border-[#a8a8a8] bg-black/60 flex p-3 rounded-full justify-between space-x-2 '>
                 <input required placeholder='New Search...' id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='w-full bg-transparent focus:outline-none ml-3' />
                 <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
                 </form>
