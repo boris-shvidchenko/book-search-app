@@ -47,11 +47,11 @@ export default function SearchModal() {
     return (
         <main className='search-main'>
             <XMarkIcon onClick={openSearchModal} className='search-x'/>
-            <div className='search-div'>
+            <div className={`search-div ${state.mobileWidth.width < 400 ? 'w-auto' : ''}`}>
                 <p className='text-xl'>Search for a new book.</p>
-                <form onSubmit={(e)=>submitSearch(e)} method='post' className='search-form'>
-                <input required placeholder='New Search...' id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='search-input' />
-                <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
+                <form onSubmit={(e)=>submitSearch(e)} method='post' className={`search-form ${state.mobileWidth.width < 400 ? 'w-auto mx-5' : ''}`}>
+                    <input required placeholder='New Search...' id='search' name='search' type="text" value={state.search} onChange={(e)=>updateSearch(e)} className='search-input' />
+                    <button><MagnifyingGlassIcon className='w-7 h-7' /></button>
                 </form>
             </div>
         </main>
