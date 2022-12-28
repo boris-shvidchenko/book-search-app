@@ -6,6 +6,7 @@ import { Context } from '../pages/_app';
 
 // Hooks
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 
 // Heroicons
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -14,12 +15,16 @@ export default function Book(props) {
 
     // Obtain app state
     const { state, dispatch } = useContext(Context);
+
+    // Router setup
+    const router = useRouter();
     
     // Obtain authors from array
     const writers = props.authors?.length > 1 ? props.authors.join(', ') : props.authors?.[0];
 
     // Copy props to temp state for storage to use in detail page, push to dynamic page 
     function showBookDetails() {
+        router.push('#top');
         dispatch({type: 'updateTempBookData', tempBookData: {
             bookTitle: props.title,
             bookDescription: props.description,

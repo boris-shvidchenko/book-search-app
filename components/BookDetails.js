@@ -21,7 +21,7 @@ export default function BookDetails() {
     }
 
     return (
-        <main className='details-main'>
+        <main className={`details-main ${state.mobileWidth.width < 768 ? 'absolute bg-[#383838]' : ''}`}>
             <XMarkIcon onClick={closeDetails} className='details-x'/>
             <div className='details-div1'>
                 <section className='details-sec1'>

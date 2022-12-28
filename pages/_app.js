@@ -6,7 +6,6 @@ import '../styles/globals.css';
 
 // Hooks
 import { createContext, useReducer, useEffect } from 'react';
-import { getDisplayName } from 'next/dist/shared/lib/utils';
 
 // Context setup
 export const Context = createContext(); 
@@ -24,7 +23,6 @@ export default function App({ Component, pageProps }) {
     details: false,
     mobileWidth: {width: ''}
   };
-
 
   // Reducer
   const [state, dispatch] = useReducer(reducer, initialState);
