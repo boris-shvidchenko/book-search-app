@@ -1,24 +1,19 @@
 // Components
 import Image from 'next/image';
-import Link from 'next/link';
 
 // Context
 import { Context } from '../pages/_app';
 
 // Hooks
 import { useContext } from 'react';
-import { useRouter } from 'next/router';
 
 // Heroicons
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
 export default function Book(props) {
 
-    // Router setup
-    const router = useRouter();
-
     // Obtain app state
-    const { state, dispatch } = useContext(Context);
+    const { dispatch } = useContext(Context);
     
     // Obtain authors from array
     const writers = props.authors?.length > 1 ? props.authors.join(', ') : props.authors?.[0];

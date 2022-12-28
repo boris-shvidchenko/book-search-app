@@ -1,6 +1,8 @@
 // Components
 import Head from 'next/head';
 import Image from 'next/image';
+
+// Heroicons
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'; 
 
 // Context
@@ -31,7 +33,7 @@ export default function Home() {
         .then(dispatch({type: 'updateSearch', search: ''}))
         .then(router.push('/results'))
         .catch(err => console.error(err))
-    )
+    );
   }
 
   // Update the search state

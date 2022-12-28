@@ -11,8 +11,7 @@ import BookDetails from '../components/BookDetails';
 import { Context } from '../pages/_app';
 
 // Hooks
-import { createContext, useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { createContext, useContext } from 'react';
 
 // Heroicons
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -24,9 +23,6 @@ export default function Results() {
 
     // Obtain app state
     const { state, dispatch } = useContext(Context);
-
-    // Router setup
-    const router = useRouter();
 
     // Map through book data from API
     const books = state.bookData?.items?.slice(state.startNum, state.endNum).map(item => {
@@ -67,7 +63,6 @@ export default function Results() {
             <Navbar />
             {state.details && <BookDetails />}
             <main className='results-main'>
-
                 <section className='results-section'>
                     <div id='top' className='hidden' />
                     {books}

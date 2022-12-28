@@ -30,7 +30,7 @@ export default function Navbar() {
                 .then(dispatch({type: 'updateSearch', search: ''}))
                 .then(router.push('/results'))
                 .catch(err => console.error(err))
-            )
+            );
         dispatch({type: 'updatePage', startNum: 0, endNum: 10});
         }
 

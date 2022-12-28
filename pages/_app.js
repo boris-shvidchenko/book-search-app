@@ -47,9 +47,6 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  // For testing 
-  console.log(state.bookData);
-
   return (
     <Context.Provider value={{state, dispatch}}>
       <Component {...pageProps} />  
