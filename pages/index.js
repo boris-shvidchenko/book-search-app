@@ -54,7 +54,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>GeoBooks</title>
       </Head>
-      <main className=' relative overflow-hidden'>
+      <main className='relative overflow-hidden'>
         <Image 
           src='/images/cover.png'
           width={2000}
