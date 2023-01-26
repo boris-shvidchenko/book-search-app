@@ -55,14 +55,13 @@ export default function Home() {
         <title>GeoBooks</title>
       </Head>
       <main className='relative overflow-hidden'>
-        {/* <Image 
+        <Image 
           src='/images/cover.png'
           width={2000}
           height={2000}
           alt='Background of a shelf of books'
           className='index-img'
-        /> */}
-        <img src='/images/cover.png' alt='Background of a shelf of books' className='index-img' />
+        />
         <section className='index-sec'>
           <div className={`index-main-div ${indexWidth}`}>
             <h1 className='index-h1'>Discover your next read!</h1>
