@@ -61,6 +61,7 @@ export default function Home() {
           height={2000}
           alt='Background of a shelf of books'
           className='index-img'
+          priority={true}
         />
         <section className='index-sec'>
           <div className={`index-main-div ${indexWidth}`}>
