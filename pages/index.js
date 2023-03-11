@@ -56,7 +56,7 @@ export default function Home() {
       </Head>
       <main className='relative overflow-hidden'>
         <Image 
-          src='/images/cover.png'
+          src='/images/cover-min.png'
           width={2000}
           height={2000}
           alt='Background of a shelf of books'
