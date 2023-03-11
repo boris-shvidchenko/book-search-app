@@ -39,7 +39,7 @@ export default function Home() {
   // Update the search state
   function updateSearch(event) {
     dispatch({type: 'updateSearch', search: event.target.value});
-  }
+  } 
 
   // Styles
   const indexWidth = state.mobileWidth.width < 400 ? 'w-auto' : '';
@@ -56,7 +56,7 @@ export default function Home() {
       </Head>
       <main className='relative overflow-hidden'>
         <Image 
-          src='/images/cover-min.png'
+          src='/images/cover.png'
           width={2000}
           height={2000}
           alt='Background of a shelf of books'
